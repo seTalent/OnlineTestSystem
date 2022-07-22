@@ -13,9 +13,9 @@ spring:
     active: default
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://47.99.71.92:33333/db_onlinetest?zeroDateTimeBehavior=convertToNull
-    username: root
-    password: 15980525898Wu
+    url: ********
+    username: *********
+    password: *********
     druid:
       stat-view-servlet:
         enabled: true
