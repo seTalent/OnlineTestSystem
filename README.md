@@ -19,7 +19,7 @@
 
 ## 项目仓库地址
 
-- Github：[seTalent/MarketJava (github.com)](https://github.com/seTalent/MarketJava)
+- Github:https://github.com/seTalent/OnlineTestSystem.git
 
 ## 项目演示地址
 
