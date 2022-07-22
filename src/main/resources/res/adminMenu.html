@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Businnes, Portfolio, Corporate">
+    <meta name="Author" content="WebThemez">
+    <title>管理员菜单</title>
+    <script src="js/jquery-3.4.1.min.js"></script>
+
+    <script src="js/vue.js"></script>
+
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Display+Playfair:wght@400;700&family=Inter:wght@400;700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="fonts/index.css">
+    <link rel="stylesheet" href="css/index_latest.css">
+
+    <link rel="stylesheet" href="html(2)/css/normalize.css">
+    <link rel="stylesheet" href="html(2)/css/bootstrap.min.css">
+    <link rel="stylesheet" href="html(2)/css/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="html(2)/elegant_font/style.css" />
+    <script src="html(2)/elegant_font/lte-ie7.js"></script>
+    <!--[endif]-->
+    <link rel="stylesheet" href="html(2)/css/magnific-popup.css">
+    <link rel="stylesheet" href="html(2)/css/slider-pro.css">
+    <link rel="stylesheet" href="html(2)/css/owl.carousel.css">
+    <link rel="stylesheet" href="html(2)/css/owl.theme.css">
+    <link rel="stylesheet" href="html(2)/css/owl.transitions.css">
+    <link rel="stylesheet" href="html(2)/css/animate.css">
+    <link rel="stylesheet" href="html(2)/elegant_font/style.css">
+    <link rel="stylesheet" href="html(2)/css/style.css">
+
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+        <script type="text/javascript" src="js/selectivizr.js"></script>
+    <![endif]-->
+    <style>
+        .collapse {
+            background-color: transparent;
+        }
+
+        .navbar-nav {
+            font-size: 2em;
+            font-weight: bolder;
+            font-family: 微软雅黑;
+            color: #1867d3;
+        }
+        .navbar-brand:hover {
+            color: #1867d3;
+        }
+
+    </style>
+</head>
+
+<body id="all">
+    <header>
+        <nav id="topNav" class="navbar navbar-default main-menu">
+            <div  class="container">
+                <button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse"
+                    data-target="#collapsingNavbar">
+                    ☰
+                </button>
+                <a class="navbar-brand page-scroll" style="font-family: 微软雅黑;color: black">Java从入门到入土</a>
+                <div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
+                    <ul class="nav navbar-nav" style="font-size: 30px">
+                        <li>
+                            <a href="#" id="username" style="color: #0b0b0b">用户名</a>
+                        </li>
+                        <li>
+                        <li>
+                            <div class="nav-item dropdown no-arrow">
+                                <a class="dropdown-toggle nav-link " data-toggle="dropdown" aria-expanded="false"
+                                   href="#"><span class="d-none d-lg-inline mr-2 text-gray-600" style="color: #0b0b0b;text-transform: none" id="userNameLogin">Settings</span></a>
+                                <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in"
+                                     style="background: white;border-radius: 13px;">
+                                    <a class="dropdown-item" href="adminInfo.html" style="color: #222265">个人主页</a>
+                                    <a class="dropdown-item" href="secretEdit_admin.html" style="color: #222265">修改密码</a>
+                                </div>
+                            </div>
+                        </li>
+                        </li>
+                        <li>
+                            <a href="#" id="logout" style="color: #0b0b0b">退出登录</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section id="services" class="section-wrapper">
+        <div class="container">
+            <div class="row">
+                <!-- Section Header -->
+                <div class="col-md-12 col-sm-12 col-xs-12 section-header wow fadeInDown">
+                    <h2><span class="highlight-text" style="font-family: 微软雅黑">管理员菜单</span></h2>
+                    <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">主要功能</p>
+                </div>
+                <div class="our-services">
+                    <style>
+                        .icon .h3 {
+                            font-family: 'Righteous', cursive;
+                            line-height: 1.2;
+                            margin-top: 0;
+                            margin-bottom: 15px;
+                            -webkit-font-smoothing: antialiased;
+                            -moz-osx-font-smoothing: grayscale;
+                            text-shadow: 1px 1px 1px rgb(0 0 0 / 0%);
+                            font-size: 24px;
+                            color: #232323;
+                            display: block;
+                        }
+                    </style>
+                    <div class="row">
+                        <div style="margin-left: 17%" class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
+                            <div class="service-box">
+                                <div class="icon">
+                                    <i class="icon_piechart"></i>
+                                    <a href="createTest_admin.html" class="h3">设置考试</a>
+                                </div>
+                                <p>设置题目极其数量</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".2s">
+                            <div class="service-box">
+                                <div class="icon">
+                                    <i class="icon_desktop"></i>
+                                    <a href="userManage.html" class="h3">管理用户</a>
+                                </div>
+                                <p>对用户进行增删查改</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div style="margin-left: 17%" class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".1s">
+                            <div class="service-box">
+                                <div class="icon">
+                                    <i class="icon_laptop"></i>
+                                    <a href="adminInfo.html" class="h3">个人信息管理</a>
+                                </div>
+                                <p>查看账号，修改密码</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12 text-xs-center wow fadeInDown" data-wow-delay=".1s">
+                            <div class="service-box">
+                                <div class="icon">
+                                    <i class="icon_image"></i>
+                                    <a href="searchEdit.html" class="h3">题库管理</a>
+                                </div>
+                                <p>增删查改题目</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="html(2)/js/jquery-1.11.3.min.js"></script>
+    <script src="html(2)/js/bootstrap.min.js"></script>
+    <script src="html(2)/js/modernizr.min.js"></script>
+    <script src="html(2)/js/jquery.easing.1.3.js"></script>
+    <script src="html(2)/js/jquery.scrollUp.min.js"></script>
+    <script src="html(2)/js/jquery.easypiechart.js"></script>
+    <script src="html(2)/js/isotope.pkgd.min.js"></script>
+    <script src="html(2)/js/jquery.fitvids.js"></script>
+    <script src="html(2)/js/jquery.stellar.min.js"></script>
+    <script src="html(2)/js/jquery.waypoints.min.js"></script>
+    <script src="html(2)/js/wow.min.js"></script>
+    <script src="html(2)/js/jquery.nav.js"></script>
+    <script src="html(2)/js/imagesloaded.pkgd.min.js"></script>
+    <script src="html(2)/js/smooth-scroll.min.js"></script>
+    <script src="html(2)/js/jquery.magnific-popup.min.js"></script>
+    <script src="html(2)/js/jquery.sliderPro.min.js"></script>
+    <script src="html(2)/js/owl.carousel.min.js"></script>
+    <script src="html(2)/js/custom.js"></script>
+</body>
+<script>
+    let vmForAll= new Vue({
+        el:"#all",
+        methods: {
+            messageBox(icon,msg){
+                this.$message({
+                    type: icon,
+                    message: msg
+                });
+            },
+            message2(){
+                this.messageBox('success','成功')
+            },
+        }
+    })
+    vmForAll.messageBox('success','你好');
+    $(function (){
+            $.ajaxSetup({
+                //设置ajax请求结束后的执行动作
+                complete: function (xhr) {
+                    console.log('')
+                    // 通过XMLHttpRequest取得响应头，sessionstatus
+                    if ("REDIRECT" == xhr.getResponseHeader("REDIRECT")) { //若HEADER中含有REDIRECT说明后端想重定向，
+                        var win = window;
+                        while (win != win.top) {
+                            win = win.top;
+                        }
+                        console.log(xhr.getResponseHeader("CONTENTPATH"));
+                        win.location.href = xhr.getResponseHeader("CONTENTPATH");//将后端重定向的地址取出来,使用win.location.href去实现重定向的要求
+                    }
+                },
+                error: function (e) {
+                    alert('出错了')
+                }
+            });
+        $.ajax({
+            url:"http://47.99.71.92:8080/onlinetest/admin/display",
+            xhrFields: {
+                withCredentials: true
+            },
+            // data:{rid:rid},
+            type:'POST',
+            async:false,
+            dataType:'json',
+            success:function (data) {
+                if(data.code===0){
+                    vmForAll.messageBox('error',data.msg);
+                }else if(data.code===1){
+                    $('#username').html('你好，' + data.data.userName);
+                    //vmForAll.messageBox('success','Hello');
+                }
+            },
+            error:function (e) {
+                vmForAll.messageBox('error','失败');
+            },
+        })
+    })
+    $('#logout').click(function () {
+        $.ajax({
+            url:"http://47.99.71.92:8080/onlinetest/admin/logout",
+            xhrFields: {
+                withCredentials: true
+            },
+            // data:{rid:rid},
+            type:'POST',
+            async:false,
+            dataType:'json',
+            success:function (data) {
+                if(data.code===0){
+                    alert(data.msg);
+                }else if(data.code===1){
+                    vmForAll.messageBox('success','退出成功');
+                    setTimeout("window.location.href = 'index.html'",1000);
+                }
+                // console.log(data);
+            },
+            error:function (e) {
+                vmForAll.messageBox('error','失败')
+            },
+        })
+    })
+</script>
+
+</html>

@@ -1,0 +1,223 @@
+body {
+  font-family: $font-family-sans-serif;
+  line-height: 1.6;
+  background-color: $white;
+  overflow-x: hidden;
+  font-size: 16px;
+  color: #666;
+  &:before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    right: 0;
+    bottom: 0;
+    background:rgba($black, .2);
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s all ease;
+  }
+  &.offcanvas-menu {
+    &:before {
+      opacity: 1;
+      visibility: visible;
+    }
+  }  
+}
+.text-black {
+  color: $black!important;
+}
+.text-secondary {
+  color: $secondary!important;
+}
+.bg-primary-light {
+  background-color: rgba($primary, .05);
+}
+.bg-secondary-light {
+  background-color: rgba($secondary, .05);
+}
+a {
+  color: $primary;
+  transition: .3s all ease;
+  &:hover {
+    color: $primary;
+    text-decoration: none;
+  }
+}
+
+::-moz-selection { background: $black; color: $white; }
+::selection { background: $black; color: $white; }
+
+.text-primary {
+  color: $primary!important;
+}
+
+a.text-primary {
+  color: $primary!important;
+  &:hover {
+    color: $primary!important;
+  }
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
+  font-family: $font-family;
+  color: #black;
+}
+
+.btn {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 30px;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: .05rem;
+  &:active, &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  &.btn-primary {
+    background: $primary;
+    border-color: $primary;
+    &:hover {
+      border-color: lighten($primary, 4%);
+      background: lighten($primary, 4%);
+    }
+  }
+  &.btn-secondary {
+    background: $secondary;
+    border-color: $secondary;
+    &:hover {
+      border-color: lighten($secondary, 4%);
+      background: lighten($secondary, 4%);
+    }
+  }
+  &.btn-sm {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  &.btn-outline-primary {
+    border-color: $primary;
+    color: $primary;
+    &:hover {
+      background: $primary;
+      color: $white;
+    }
+  }
+}
+
+
+.form-control, .custom-select {
+  border: none;
+  font-size: 16px;
+  height: 55px;
+  // padding-left: 0;
+  // padding-right: 0;
+  background: transparent;
+  border: 1px solid rgba($black, .1);
+  border-radius: 7px;
+  color: $black;
+  &:active, &:focus {
+    color: $black;
+    border-color: $primary;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: rgba($black, .5);
+  }
+  &::-moz-placeholder { /* Firefox 19+ */
+    color: rgba($black, .5);
+  }
+  &:-ms-input-placeholder { /* IE 10+ */
+    color: rgba($black, .5);
+  }
+  &:-moz-placeholder { /* Firefox 18- */
+    color: rgba($black, .5);
+  }
+}
+
+.gutter-v1 {
+  margin-right: -20px;
+  margin-left: -20px;
+  @include media-breakpoint-down(md) {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+  > .col,
+  > [class*="col-"] {
+    padding-right: 20px;
+    padding-left: 20px;
+    @include media-breakpoint-down(md) {
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+  }
+}
+
+.gutter-v2 {
+  margin-right: -5px;
+  margin-left: -5px;
+  @include media-breakpoint-down(md) {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+  > .col,
+  > [class*="col-"] {
+    padding-right: 5px;
+    padding-left: 5px;
+    @include media-breakpoint-down(md) {
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+  }
+}
+
+.gutter-v3 {
+  margin-right: -40px;
+  margin-left: -40px;
+  @include media-breakpoint-down(md) {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+  > .col,
+  > [class*="col-"] {
+    padding-right: 40px;
+    padding-left: 40px;
+    @include media-breakpoint-down(md) {
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+  }
+}
+
+.spinner-border {
+	color: $primary;
+}
+/*PRELOADING------------ */
+#overlayer {
+  width:100%;
+  height:100%;  
+  position:fixed;
+  z-index:7100;
+  background: $white;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.loader {
+	z-index:7700;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}

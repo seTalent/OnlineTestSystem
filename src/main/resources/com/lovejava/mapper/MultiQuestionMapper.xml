@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovejava.mapper.MultiQuestionMapper">
+  <resultMap id="BaseResultMap" type="com.lovejava.pojo.MultiQuestion">
+    <id column="qid" jdbcType="INTEGER" property="qid" />
+    <result column="major" jdbcType="VARCHAR" property="major" />
+    <result column="answer_a" jdbcType="VARCHAR" property="answerA" />
+    <result column="answer_b" jdbcType="VARCHAR" property="answerB" />
+    <result column="answer_c" jdbcType="VARCHAR" property="answerC" />
+    <result column="answer_d" jdbcType="VARCHAR" property="answerD" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.lovejava.pojo.MultiQuestion">
+    <result column="question" jdbcType="LONGVARCHAR" property="question" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    qid, major, answer_a, answer_b, answer_c, answer_d
+  </sql>
+  <sql id="Blob_Column_List">
+    question
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_multiple
+    where qid = #{qid,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMajor" resultType="com.lovejava.pojo.MultiQuestion" resultMap="BaseResultMap">
+    select * from tb_multiple
+    where major=#{major}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_multiple
+    where qid = #{qid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lovejava.pojo.MultiQuestion">
+    insert into tb_multiple (qid, major, answer_a, 
+      answer_b, answer_c, answer_d, 
+      question)
+    values (#{qid,jdbcType=INTEGER}, #{major,jdbcType=VARCHAR}, #{answerA,jdbcType=VARCHAR}, 
+      #{answerB,jdbcType=VARCHAR}, #{answerC,jdbcType=VARCHAR}, #{answerD,jdbcType=VARCHAR}, 
+      #{question,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lovejava.pojo.MultiQuestion">
+    insert into tb_multiple
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="qid != null">
+        qid,
+      </if>
+      <if test="major != null">
+        major,
+      </if>
+      <if test="answerA != null">
+        answer_a,
+      </if>
+      <if test="answerB != null">
+        answer_b,
+      </if>
+      <if test="answerC != null">
+        answer_c,
+      </if>
+      <if test="answerD != null">
+        answer_d,
+      </if>
+      <if test="question != null">
+        question,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="qid != null">
+        #{qid,jdbcType=INTEGER},
+      </if>
+      <if test="major != null">
+        #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="answerA != null">
+        #{answerA,jdbcType=VARCHAR},
+      </if>
+      <if test="answerB != null">
+        #{answerB,jdbcType=VARCHAR},
+      </if>
+      <if test="answerC != null">
+        #{answerC,jdbcType=VARCHAR},
+      </if>
+      <if test="answerD != null">
+        #{answerD,jdbcType=VARCHAR},
+      </if>
+      <if test="question != null">
+        #{question,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lovejava.pojo.MultiQuestion">
+    update tb_multiple
+    <set>
+      <if test="major != null">
+        major = #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="answerA != null">
+        answer_a = #{answerA,jdbcType=VARCHAR},
+      </if>
+      <if test="answerB != null">
+        answer_b = #{answerB,jdbcType=VARCHAR},
+      </if>
+      <if test="answerC != null">
+        answer_c = #{answerC,jdbcType=VARCHAR},
+      </if>
+      <if test="answerD != null">
+        answer_d = #{answerD,jdbcType=VARCHAR},
+      </if>
+      <if test="question != null">
+        question = #{question,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where qid = #{qid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.lovejava.pojo.MultiQuestion">
+    update tb_multiple
+    set major = #{major,jdbcType=VARCHAR},
+      answer_a = #{answerA,jdbcType=VARCHAR},
+      answer_b = #{answerB,jdbcType=VARCHAR},
+      answer_c = #{answerC,jdbcType=VARCHAR},
+      answer_d = #{answerD,jdbcType=VARCHAR},
+      question = #{question,jdbcType=LONGVARCHAR}
+    where qid = #{qid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lovejava.pojo.MultiQuestion">
+    update tb_multiple
+    set major = #{major,jdbcType=VARCHAR},
+      answer_a = #{answerA,jdbcType=VARCHAR},
+      answer_b = #{answerB,jdbcType=VARCHAR},
+      answer_c = #{answerC,jdbcType=VARCHAR},
+      answer_d = #{answerD,jdbcType=VARCHAR}
+    where qid = #{qid,jdbcType=INTEGER}
+  </update>
+</mapper>

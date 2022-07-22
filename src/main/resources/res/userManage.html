@@ -1,0 +1,708 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Untree.co">
+  <link rel="shortcut icon" href="favicon.png">
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="bootstrap, bootstrap4" />
+  <script src="js/jquery-3.4.1.min.js"></script>
+
+  <script src="js/vue.js"></script>
+
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Display+Playfair:wght@400;700&family=Inter:wght@400;700&display=swap"
+        rel="stylesheet">
+  <link rel="stylesheet" href="fonts/index.css">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+  <link rel="stylesheet" href="css/index_latest.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/animate.min.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+  <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <title>用户搜索</title>
+  <style>
+    body{
+      background-color: #1867d3;
+    }
+    .btn-check{
+      display: none;
+    }
+  </style>
+</head>
+
+<body id="all">
+<svg width="100%" height="130%" id="svg" viewBox="0 0 1440 600" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150" style="position: fixed;"><style>
+  .path-0{
+    animation:pathAnim-0 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  @keyframes pathAnim-0{
+    0%{
+      d: path("M 0,600 C 0,600 0,120 0,120 C 55.08906153656433,130.34618325317547 110.17812307312866,140.69236650635096 166,137 C 221.82187692687134,133.30763349364904 278.3765692440498,115.5767172277716 331,118 C 383.6234307559502,120.4232827722284 432.3155999506721,143.00076458256262 491,151 C 549.6844000493279,158.99923541743738 618.3610309532618,152.42022444197804 667,155 C 715.6389690467382,157.57977555802196 744.2402762362806,169.31833764952523 794,155 C 843.7597237637194,140.68166235047477 914.6778641016155,100.30642495992106 968,88 C 1021.3221358983845,75.69357504007894 1057.0482673572574,91.4559625107905 1111,112 C 1164.9517326427426,132.5440374892095 1237.129066469355,157.869724996917 1295,160 C 1352.870933530645,162.130275003083 1396.4354667653224,141.0651375015415 1440,120 C 1440,120 1440,600 1440,600 Z");
+    }
+    25%{
+      d: path("M 0,600 C 0,600 0,120 0,120 C 37.12699469724997,124.53826612405969 74.25398939449994,129.07653224811938 131,118 C 187.74601060550006,106.92346775188062 264.1110371192502,80.23213713158218 327,93 C 389.8889628807498,105.76786286841782 439.3018621284991,157.99491922555188 495,158 C 550.6981378715009,158.00508077444812 612.6815143667529,105.78818596621036 666,106 C 719.3184856332471,106.21181403378964 763.9720804044889,158.85233690960663 815,163 C 866.0279195955111,167.14766309039337 923.4301640152914,122.80246639536317 975,104 C 1026.5698359847086,85.19753360463683 1072.3072635343447,91.9377975089407 1118,89 C 1163.6927364656553,86.0622024910593 1209.3407818473302,73.44634356887408 1263,77 C 1316.6592181526698,80.55365643112592 1378.329609076335,100.27682821556296 1440,120 C 1440,120 1440,600 1440,600 Z");
+    }
+    50%{
+      d: path("M 0,600 C 0,600 0,120 0,120 C 55.18875323714393,126.80192378838328 110.37750647428786,133.60384757676655 164,120 C 217.62249352571214,106.39615242323343 269.6787273399926,72.38653348131703 315,77 C 360.3212726600074,81.61346651868297 398.9075841657417,124.85001849796524 450,146 C 501.0924158342583,167.14998150203476 564.6909359970404,166.21339252682205 631,148 C 697.3090640029596,129.78660747317795 766.328671846097,94.29641139474657 815,99 C 863.671328153903,103.70358860525343 891.9943766185719,148.6009618941916 934,160 C 976.0056233814281,171.3990381058084 1031.6938216796154,149.29974102848686 1099,144 C 1166.3061783203846,138.70025897151314 1245.230336662967,150.20007399186088 1304,149 C 1362.769663337033,147.79992600813912 1401.3848316685167,133.89996300406955 1440,120 C 1440,120 1440,600 1440,600 Z");
+    }
+    75%{
+      d: path("M 0,600 C 0,600 0,120 0,120 C 47.055863854975954,125.35666543346898 94.11172770995191,130.71333086693795 154,130 C 213.8882722900481,129.28666913306205 286.60895301516837,122.50334196571711 341,116 C 395.39104698483163,109.49665803428289 431.45246022937476,103.2733012701936 478,97 C 524.5475397706252,90.7266987298064 581.5812060673327,84.40345295350845 638,80 C 694.4187939326673,75.59654704649155 750.2227155012949,73.11288691577258 799,87 C 847.7772844987051,100.88711308422742 889.527931927488,131.14499938340117 944,148 C 998.472068072512,164.85500061659883 1065.6655567887533,168.30711555062277 1120,157 C 1174.3344432112467,145.69288444937723 1215.809840917499,119.62653841410778 1267,111 C 1318.190159082501,102.37346158589222 1379.0950795412505,111.18673079294611 1440,120 C 1440,120 1440,600 1440,600 Z");
+    }
+    100%{
+      d: path("M 0,600 C 0,600 0,120 0,120 C 55.08906153656433,130.34618325317547 110.17812307312866,140.69236650635096 166,137 C 221.82187692687134,133.30763349364904 278.3765692440498,115.5767172277716 331,118 C 383.6234307559502,120.4232827722284 432.3155999506721,143.00076458256262 491,151 C 549.6844000493279,158.99923541743738 618.3610309532618,152.42022444197804 667,155 C 715.6389690467382,157.57977555802196 744.2402762362806,169.31833764952523 794,155 C 843.7597237637194,140.68166235047477 914.6778641016155,100.30642495992106 968,88 C 1021.3221358983845,75.69357504007894 1057.0482673572574,91.4559625107905 1111,112 C 1164.9517326427426,132.5440374892095 1237.129066469355,157.869724996917 1295,160 C 1352.870933530645,162.130275003083 1396.4354667653224,141.0651375015415 1440,120 C 1440,120 1440,600 1440,600 Z");
+    }
+  }</style><defs><linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%"><stop offset="5%" stop-color="#002bdc44"></stop><stop offset="95%" stop-color="#32ded444"></stop></linearGradient></defs><path d="M 0,600 C 0,600 0,120 0,120 C 55.08906153656433,130.34618325317547 110.17812307312866,140.69236650635096 166,137 C 221.82187692687134,133.30763349364904 278.3765692440498,115.5767172277716 331,118 C 383.6234307559502,120.4232827722284 432.3155999506721,143.00076458256262 491,151 C 549.6844000493279,158.99923541743738 618.3610309532618,152.42022444197804 667,155 C 715.6389690467382,157.57977555802196 744.2402762362806,169.31833764952523 794,155 C 843.7597237637194,140.68166235047477 914.6778641016155,100.30642495992106 968,88 C 1021.3221358983845,75.69357504007894 1057.0482673572574,91.4559625107905 1111,112 C 1164.9517326427426,132.5440374892095 1237.129066469355,157.869724996917 1295,160 C 1352.870933530645,162.130275003083 1396.4354667653224,141.0651375015415 1440,120 C 1440,120 1440,600 1440,600 Z" stroke="none" stroke-width="0" fill="url(#gradient)" class="transition-all duration-300 ease-in-out delay-150 path-0"></path><style>
+  .path-1{
+    animation:pathAnim-1 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  @keyframes pathAnim-1{
+    0%{
+      d: path("M 0,600 C 0,600 0,240 0,240 C 53.7769392033543,258.9245529658404 107.5538784067086,277.8491059316808 158,274 C 208.4461215932914,270.1508940683192 255.56142557651998,243.52812923911705 305,224 C 354.43857442348,204.47187076088295 406.2004192872116,192.03837711185105 460,210 C 513.7995807127884,227.96162288814895 569.6368972746333,276.3183623134788 624,271 C 678.3631027253667,265.6816376865212 731.2519916142558,206.68817363423358 788,198 C 844.7480083857442,189.31182636576642 905.3551362683436,230.92894314958687 965,233 C 1024.6448637316564,235.07105685041313 1083.327463312369,197.59605376741894 1128,201 C 1172.672536687631,204.40394623258106 1203.3350104821802,248.68684178073744 1253,262 C 1302.6649895178198,275.31315821926256 1371.33249475891,257.65657910963125 1440,240 C 1440,240 1440,600 1440,600 Z");
+    }
+    25%{
+      d: path("M 0,600 C 0,600 0,240 0,240 C 47.853348131705516,241.52280182513258 95.70669626341103,243.04560365026515 146,236 C 196.29330373658897,228.95439634973485 249.02656307806143,213.340387224072 310,225 C 370.97343692193857,236.659612775928 440.1870514243433,275.5928474534468 495,275 C 549.8129485756567,274.4071525465532 590.2252312245653,234.28822296214085 638,212 C 685.7747687754347,189.71177703785915 740.9120236773955,185.25426069798988 799,204 C 857.0879763226045,222.74573930201012 918.1266740658527,264.69473424589967 968,270 C 1017.8733259341473,275.30526575410033 1056.5812800591934,243.96680231841162 1102,234 C 1147.4187199408066,224.03319768158838 1199.5482056973733,235.4380564804538 1257,240 C 1314.4517943026267,244.5619435195462 1377.2258971513133,242.28097175977308 1440,240 C 1440,240 1440,600 1440,600 Z");
+    }
+    50%{
+      d: path("M 0,600 C 0,600 0,240 0,240 C 55.69959304476507,229.73348131705512 111.39918608953013,219.46696263411027 159,211 C 206.60081391046987,202.53303736588973 246.1028486866445,195.86563078061414 299,195 C 351.8971513133555,194.13436921938586 418.189419163892,199.07051424343322 477,214 C 535.810580836108,228.92948575656678 587.1394746577876,253.8523122456529 642,260 C 696.8605253422124,266.1476877543471 755.2526822049575,253.5202367739549 806,249 C 856.7473177950425,244.4797632260451 899.8497965223825,248.06674065852758 956,255 C 1012.1502034776175,261.9332593414724 1081.3481317055125,272.2128005919349 1143,273 C 1204.6518682944875,273.7871994080651 1258.7576766555678,265.08205697373285 1307,258 C 1355.2423233444322,250.91794302626712 1397.6211616722162,245.45897151313358 1440,240 C 1440,240 1440,600 1440,600 Z");
+    }
+    75%{
+      d: path("M 0,600 C 0,600 0,240 0,240 C 42.99346405228758,222.18399309409298 85.98692810457516,204.36798618818597 148,203 C 210.01307189542484,201.63201381181403 291.0457516339869,216.71204834134912 339,233 C 386.9542483660131,249.28795165865088 401.8300653594771,266.78382044641756 450,270 C 498.1699346405229,273.21617955358244 579.6339869281045,262.15266987298065 643,265 C 706.3660130718955,267.84733012701935 751.6339869281046,284.6055000616599 800,279 C 848.3660130718954,273.3944999383401 899.8300653594771,245.4253298803798 946,246 C 992.1699346405229,246.5746701196202 1033.045751633987,275.69318041682084 1092,274 C 1150.954248366013,272.30681958317916 1227.9869281045753,239.8019484523369 1289,229 C 1350.0130718954247,218.1980515476631 1395.0065359477123,229.09902577383156 1440,240 C 1440,240 1440,600 1440,600 Z");
+    }
+    100%{
+      d: path("M 0,600 C 0,600 0,240 0,240 C 53.7769392033543,258.9245529658404 107.5538784067086,277.8491059316808 158,274 C 208.4461215932914,270.1508940683192 255.56142557651998,243.52812923911705 305,224 C 354.43857442348,204.47187076088295 406.2004192872116,192.03837711185105 460,210 C 513.7995807127884,227.96162288814895 569.6368972746333,276.3183623134788 624,271 C 678.3631027253667,265.6816376865212 731.2519916142558,206.68817363423358 788,198 C 844.7480083857442,189.31182636576642 905.3551362683436,230.92894314958687 965,233 C 1024.6448637316564,235.07105685041313 1083.327463312369,197.59605376741894 1128,201 C 1172.672536687631,204.40394623258106 1203.3350104821802,248.68684178073744 1253,262 C 1302.6649895178198,275.31315821926256 1371.33249475891,257.65657910963125 1440,240 C 1440,240 1440,600 1440,600 Z");
+    }
+  }</style><defs><linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%"><stop offset="5%" stop-color="#002bdc66"></stop><stop offset="95%" stop-color="#32ded466"></stop></linearGradient></defs><path d="M 0,600 C 0,600 0,240 0,240 C 53.7769392033543,258.9245529658404 107.5538784067086,277.8491059316808 158,274 C 208.4461215932914,270.1508940683192 255.56142557651998,243.52812923911705 305,224 C 354.43857442348,204.47187076088295 406.2004192872116,192.03837711185105 460,210 C 513.7995807127884,227.96162288814895 569.6368972746333,276.3183623134788 624,271 C 678.3631027253667,265.6816376865212 731.2519916142558,206.68817363423358 788,198 C 844.7480083857442,189.31182636576642 905.3551362683436,230.92894314958687 965,233 C 1024.6448637316564,235.07105685041313 1083.327463312369,197.59605376741894 1128,201 C 1172.672536687631,204.40394623258106 1203.3350104821802,248.68684178073744 1253,262 C 1302.6649895178198,275.31315821926256 1371.33249475891,257.65657910963125 1440,240 C 1440,240 1440,600 1440,600 Z" stroke="none" stroke-width="0" fill="url(#gradient)" class="transition-all duration-300 ease-in-out delay-150 path-1"></path><style>
+  .path-2{
+    animation:pathAnim-2 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  @keyframes pathAnim-2{
+    0%{
+      d: path("M 0,600 C 0,600 0,360 0,360 C 54.50334196571711,364.24639289678134 109.00668393143422,368.4927857935627 170,373 C 230.99331606856578,377.5072142064373 298.47660623998024,382.27524972253053 346,375 C 393.52339376001976,367.72475027746947 421.08689110864475,348.40621531631524 471,337 C 520.9131088913553,325.59378468368476 593.1758293254408,322.0998890122087 646,335 C 698.8241706745592,347.9001109877913 732.2097915895919,377.19422863485016 780,382 C 827.7902084104081,386.80577136514984 889.985004316192,367.12319644839073 948,353 C 1006.014995683808,338.87680355160927 1059.8501911456408,330.3129855715871 1116,331 C 1172.1498088543592,331.6870144284129 1230.6142311012454,341.62486126526085 1285,348 C 1339.3857688987546,354.37513873473915 1389.6928844493773,357.1875693673696 1440,360 C 1440,360 1440,600 1440,600 Z");
+    }
+    25%{
+      d: path("M 0,600 C 0,600 0,360 0,360 C 52.42140831175239,351.31749907510175 104.84281662350477,342.6349981502035 163,354 C 221.15718337649523,365.3650018497965 285.05014181773333,396.7775064742878 332,393 C 378.94985818226667,389.2224935257122 408.95661610556175,350.2549759526452 451,343 C 493.04338389443825,335.7450240473548 547.1233937600197,360.2025897151313 612,360 C 676.8766062399803,359.7974102848687 752.5498088543594,334.9346651868294 804,324 C 855.4501911456406,313.0653348131706 882.6773708225426,316.05874953755085 938,318 C 993.3226291774574,319.94125046244915 1076.7407078554695,320.8303366629671 1134,336 C 1191.2592921445305,351.1696633370329 1222.35979775558,380.61990381058075 1269,387 C 1315.64020224442,393.38009618941925 1377.82010112221,376.6900480947096 1440,360 C 1440,360 1440,600 1440,600 Z");
+    }
+    50%{
+      d: path("M 0,600 C 0,600 0,360 0,360 C 34.04044888395609,386.0751757306696 68.08089776791218,412.15035146133926 130,400 C 191.91910223208782,387.84964853866074 281.71685781230735,337.4737698853126 340,322 C 398.28314218769265,306.5262301146874 425.0516709828586,325.95456899741026 472,331 C 518.9483290171414,336.04543100258974 586.0764582562585,326.7079541250463 648,324 C 709.9235417437415,321.2920458749537 766.6424959921073,325.21361450240477 813,338 C 859.3575040078927,350.78638549759523 895.3535577753116,372.43758786533476 949,378 C 1002.6464422246884,383.56241213466524 1073.9432729066468,373.03603403625596 1132,368 C 1190.0567270933532,362.96396596374404 1234.8733505981008,363.41827598964113 1284,363 C 1333.1266494018992,362.58172401035887 1386.5633247009496,361.2908620051794 1440,360 C 1440,360 1440,600 1440,600 Z");
+    }
+    75%{
+      d: path("M 0,600 C 0,600 0,360 0,360 C 50.87206807251202,378.83803181650023 101.74413614502404,397.6760636330004 162,385 C 222.25586385497596,372.3239363669996 291.89552349241586,328.1337772844987 338,320 C 384.10447650758414,311.8662227155013 406.6737698853126,339.78882722900477 462,363 C 517.3262301146874,386.21117277099523 605.4093969663337,404.7109137994821 660,390 C 714.5906030336663,375.2890862005179 735.6886422493527,327.36751757306695 776,331 C 816.3113577506473,334.63248242693305 875.8360340362559,389.81901590825004 937,402 C 998.1639659637441,414.18098409174996 1060.9672216056233,383.35641879393273 1125,377 C 1189.0327783943767,370.64358120606727 1254.2950795412505,388.7553089160192 1307,390 C 1359.7049204587495,391.2446910839808 1399.8524602293746,375.6223455419904 1440,360 C 1440,360 1440,600 1440,600 Z");
+    }
+    100%{
+      d: path("M 0,600 C 0,600 0,360 0,360 C 54.50334196571711,364.24639289678134 109.00668393143422,368.4927857935627 170,373 C 230.99331606856578,377.5072142064373 298.47660623998024,382.27524972253053 346,375 C 393.52339376001976,367.72475027746947 421.08689110864475,348.40621531631524 471,337 C 520.9131088913553,325.59378468368476 593.1758293254408,322.0998890122087 646,335 C 698.8241706745592,347.9001109877913 732.2097915895919,377.19422863485016 780,382 C 827.7902084104081,386.80577136514984 889.985004316192,367.12319644839073 948,353 C 1006.014995683808,338.87680355160927 1059.8501911456408,330.3129855715871 1116,331 C 1172.1498088543592,331.6870144284129 1230.6142311012454,341.62486126526085 1285,348 C 1339.3857688987546,354.37513873473915 1389.6928844493773,357.1875693673696 1440,360 C 1440,360 1440,600 1440,600 Z");
+    }
+  }</style><defs><linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%"><stop offset="5%" stop-color="#002bdc88"></stop><stop offset="95%" stop-color="#32ded488"></stop></linearGradient></defs><path d="M 0,600 C 0,600 0,360 0,360 C 54.50334196571711,364.24639289678134 109.00668393143422,368.4927857935627 170,373 C 230.99331606856578,377.5072142064373 298.47660623998024,382.27524972253053 346,375 C 393.52339376001976,367.72475027746947 421.08689110864475,348.40621531631524 471,337 C 520.9131088913553,325.59378468368476 593.1758293254408,322.0998890122087 646,335 C 698.8241706745592,347.9001109877913 732.2097915895919,377.19422863485016 780,382 C 827.7902084104081,386.80577136514984 889.985004316192,367.12319644839073 948,353 C 1006.014995683808,338.87680355160927 1059.8501911456408,330.3129855715871 1116,331 C 1172.1498088543592,331.6870144284129 1230.6142311012454,341.62486126526085 1285,348 C 1339.3857688987546,354.37513873473915 1389.6928844493773,357.1875693673696 1440,360 C 1440,360 1440,600 1440,600 Z" stroke="none" stroke-width="0" fill="url(#gradient)" class="transition-all duration-300 ease-in-out delay-150 path-2"></path><style>
+  .path-3{
+    animation:pathAnim-3 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  @keyframes pathAnim-3{
+    0%{
+      d: path("M 0,600 C 0,600 0,480 0,480 C 56.37306696263411,469.7087187076088 112.74613392526823,459.41743741521765 162,455 C 211.25386607473177,450.58256258478235 253.38853126156124,452.0389690467382 303,463 C 352.61146873843876,473.9610309532618 409.69974102848687,494.42668639782954 466,495 C 522.3002589715131,495.57331360217046 577.8125046244912,476.2542853619436 642,471 C 706.1874953755088,465.7457146380564 779.0502404735479,474.5561721543964 823,477 C 866.9497595264521,479.4438278456036 881.9865334813172,475.52102602047097 934,481 C 986.0134665186828,486.47897397952903 1075.0036256011838,501.3597237637194 1143,495 C 1210.9963743988162,488.6402762362806 1257.9989641139473,461.0400789246516 1304,455 C 1350.0010358860527,448.9599210753484 1395.0005179430264,464.4799605376742 1440,480 C 1440,480 1440,600 1440,600 Z");
+    }
+    25%{
+      d: path("M 0,600 C 0,600 0,480 0,480 C 63.87761746207916,482.3063263041065 127.75523492415832,484.61265260821307 170,496 C 212.24476507584168,507.38734739178693 232.85667776544585,527.8557158712542 291,520 C 349.14332223455415,512.1442841287458 444.8180540140585,475.96448390677034 498,471 C 551.1819459859415,466.03551609322966 561.8711061783204,492.28634850166475 612,496 C 662.1288938216796,499.71365149833525 751.69752127266,480.8901220865705 807,468 C 862.30247872734,455.1098779134295 883.3388087310396,448.15316315205325 939,454 C 994.6611912689604,459.84683684794675 1084.9472438031817,478.4972253052165 1144,492 C 1203.0527561968183,505.5027746947835 1230.8722160562338,513.8579356270809 1275,511 C 1319.1277839437662,508.14206437291904 1379.563891971883,494.07103218645955 1440,480 C 1440,480 1440,600 1440,600 Z");
+    }
+    50%{
+      d: path("M 0,600 C 0,600 0,480 0,480 C 41.472388703909246,480.92519422863484 82.94477740781849,481.8503884572697 136,479 C 189.0552225921815,476.1496115427303 253.69327907263528,469.5236403995561 321,461 C 388.3067209273647,452.4763596004439 458.2821063016403,442.05504994450615 508,442 C 557.7178936983597,441.94495005549385 587.1782957208039,452.2561598224195 630,456 C 672.8217042791961,459.7438401775805 729.0047108151439,456.9203107658157 786,472 C 842.9952891848561,487.0796892341843 900.8028610186213,520.0625971143174 963,517 C 1025.1971389813787,513.9374028856826 1091.7838451103712,474.8293007769145 1142,454 C 1192.2161548896288,433.1706992230855 1226.0617585398938,430.6201997780244 1273,438 C 1319.9382414601062,445.3798002219756 1379.969120730053,462.68990011098776 1440,480 C 1440,480 1440,600 1440,600 Z");
+    }
+    75%{
+      d: path("M 0,600 C 0,600 0,480 0,480 C 50.742730299667045,474.3260081391047 101.48546059933409,468.65201627820943 155,464 C 208.5145394006659,459.34798372179057 264.80088790233077,455.71794302626705 317,469 C 369.19911209766923,482.28205697373295 417.3109877913429,512.4762116167221 466,509 C 514.6890122086571,505.52378838327786 563.9551609322975,468.37721050684434 620,467 C 676.0448390677025,465.62278949315566 738.8683684794672,500.0149463559008 798,506 C 857.1316315205328,511.9850536440992 912.5713651498335,489.5630040695523 964,485 C 1015.4286348501665,480.4369959304477 1062.8461709211988,493.73303736588986 1118,490 C 1173.1538290788012,486.26696263411014 1236.0439511653717,465.5048464668886 1291,461 C 1345.9560488346283,456.4951535331114 1392.9780244173141,468.2475767665557 1440,480 C 1440,480 1440,600 1440,600 Z");
+    }
+    100%{
+      d: path("M 0,600 C 0,600 0,480 0,480 C 56.37306696263411,469.7087187076088 112.74613392526823,459.41743741521765 162,455 C 211.25386607473177,450.58256258478235 253.38853126156124,452.0389690467382 303,463 C 352.61146873843876,473.9610309532618 409.69974102848687,494.42668639782954 466,495 C 522.3002589715131,495.57331360217046 577.8125046244912,476.2542853619436 642,471 C 706.1874953755088,465.7457146380564 779.0502404735479,474.5561721543964 823,477 C 866.9497595264521,479.4438278456036 881.9865334813172,475.52102602047097 934,481 C 986.0134665186828,486.47897397952903 1075.0036256011838,501.3597237637194 1143,495 C 1210.9963743988162,488.6402762362806 1257.9989641139473,461.0400789246516 1304,455 C 1350.0010358860527,448.9599210753484 1395.0005179430264,464.4799605376742 1440,480 C 1440,480 1440,600 1440,600 Z");
+    }
+  }</style><defs><linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%"><stop offset="5%" stop-color="#002bdcff"></stop><stop offset="95%" stop-color="#32ded4ff"></stop></linearGradient></defs><path d="M 0,600 C 0,600 0,480 0,480 C 56.37306696263411,469.7087187076088 112.74613392526823,459.41743741521765 162,455 C 211.25386607473177,450.58256258478235 253.38853126156124,452.0389690467382 303,463 C 352.61146873843876,473.9610309532618 409.69974102848687,494.42668639782954 466,495 C 522.3002589715131,495.57331360217046 577.8125046244912,476.2542853619436 642,471 C 706.1874953755088,465.7457146380564 779.0502404735479,474.5561721543964 823,477 C 866.9497595264521,479.4438278456036 881.9865334813172,475.52102602047097 934,481 C 986.0134665186828,486.47897397952903 1075.0036256011838,501.3597237637194 1143,495 C 1210.9963743988162,488.6402762362806 1257.9989641139473,461.0400789246516 1304,455 C 1350.0010358860527,448.9599210753484 1395.0005179430264,464.4799605376742 1440,480 C 1440,480 1440,600 1440,600 Z" stroke="none" stroke-width="0" fill="url(#gradient)" class="transition-all duration-300 ease-in-out delay-150 path-3"></path></svg>
+
+<div class="site-mobile-menu">
+  <div class="site-mobile-menu-header">
+    <div class="site-mobile-menu-close">
+      <span class="icofont-close js-menu-toggle"></span>
+    </div>
+  </div>
+  <div class="site-mobile-menu-body"></div>
+</div>
+
+<nav class="site-nav mb-5">
+  <div class="sticky-nav js-sticky-header" style=" padding-bottom: 30px;">
+    <div class="container position-relative">
+      <div class="site-navigation text-center">
+        <a href="index.html" class="logo menu-absolute m-0" style="letter-spacing:3px; font-size: 20px;padding-top: 15px;font-family: 微软雅黑; text-decoration: none;">
+          Java从入门到入土<span class="text-primary"></span></a>
+
+        <ul class="js-clone-nav d-none d-lg-inline-block site-menu" style="float:right;padding-top: 20px;">
+
+          <li><a href="createTest_admin.html" style="font-size: 17px;"><b>考试设置</b></a></li>
+          <li><a href="editQuestion.html" style="font-size: 17px;"><b>题库管理</b></a></li>
+          <li><a href="userManage.html" style="font-size: 17px;"><b>用户管理</b></a></li>
+          <li class="nav-item dropdown no-arrow">
+            <div class="nav-item dropdown no-arrow">
+              <a class="dropdown-toggle nav-link " data-toggle="dropdown" aria-expanded="false"
+                 href="#"><span class="d-none d-lg-inline mr-2 text-gray-600" style="color:#12129d;"
+                                id="userNameLogin">
+                          Settings</span></a>
+              <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in"
+                   style="background: white;border-radius: 13px;">
+                <a class="dropdown-item" href="adminMenu.html"><i
+                        class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;功能页面</a>
+                <a class="dropdown-item" href="adminInfo.html"><i
+                        class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;个人主页</a>
+                <a class="dropdown-item" href="secretEdit_admin.html"><i
+                        class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;修改密码</a>
+                <div class="dropdown-divider"></div>
+                <a id="logout" class="dropdown-item" href="#"><i
+                        class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;注销</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class=" inner-page overlay" style="min-height: 300px; ">
+  <div class="container">
+    <div class="row align-items-center justify-content-center" style="min-height: 0px;">
+      <div class="col-12">
+        <div class="row justify-content-center ">
+          <div class="col-lg-6 text-center ">
+            <h1 class="mb-4 heading text-white" data-aos="fade-up" data-aos-delay="200" style="margin-top:100px;font-weight: bold">欢迎来到在线考试系统</h1>
+          </div>
+        </div>
+      </div>
+    </div> <!-- /.row -->
+  </div> <!-- /.container -->
+
+</div> <!-- /.untree_co-hero -->
+
+<div class="untree_co-section" style="color: #0a53be">
+  <div class="container">
+    <div class="row mb-12 justify-content-center">
+      <div class="col-lg-6 mx-auto order-1" data-aos="fade-up" data-aos-delay="300">
+        <form action="#" class="form-box" style="width: 200%;margin-left: -50%">
+          <div class="row">
+            <style>
+              label{
+                height:40px;
+                border-radius: 10px;
+              }
+            </style>
+            <div class="col-12 mb-3 row">
+              <input type="button" value="搜索" id="SearchBtn" class="btn btn-primary col-lg-2 fs-5" style="margin-right: 10px; padding: 10px 10px;">
+              <input type="text" class="form-control" id="searchText" style="width: 80%; background-color: rgb(255, 255, 255);" placeholder="搜索">
+            </div>
+            <div class="fs-4" role="group" aria-label="Basic radio toggle button group" id="majorRadioButtonGroup">
+              科目分类：
+              <!--                <input type="radio" class="btn-check" name="btnradio" id="btnradio0" autocomplete="off" checked>-->
+              <!--                <label class="btn btn-outline-primary fs-6" for="btnradio0" style="padding:7px 20px 0px 20px;">全部</label>-->
+              <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off" checked>
+              <label class="btn btn-outline-primary fs-6" for="btnradio4" style="padding:7px 20px 0px 20px;">信息</label>
+              <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off">
+              <label class="btn btn-outline-primary fs-6" for="btnradio5" style="padding:7px 20px 0px 20px;">医学</label>
+              <input type="radio" class="btn-check" name="btnradio" id="btnradio6" autocomplete="off">
+              <label class="btn btn-outline-primary fs-6" for="btnradio6" style="padding:7px 20px 0px 20px;">物理学</label>
+              <input type="radio" class="btn-check" name="btnradio" id="btnradio7" autocomplete="off">
+              <label class="btn btn-outline-primary fs-6" for="btnradio7" style="padding:7px 20px 0px 20px;" >金融学</label>
+            </div>
+          </div>
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col" class="col-2">用户id</th>
+              <th scope="col" class="col-9">用户名</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody id="searchListTableBody">
+
+            </tbody>
+          </table>
+        </form>
+      </div>
+    </div>
+
+
+  </div>
+</div> <!-- /.untree_co-section -->
+
+<div class="site-footer">
+
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-lg-3 mr-auto">
+        <div class="widget">
+          <h3>关于我们<span class="text-primary">.</span> </h3>
+          <p>Java从入门到入土 小组</p>
+          <p>组长：朱克宇</p>
+          <p>组员：吴质城
+            冯良玉
+            宋梓鑫
+            吴滢洁</p>
+        </div> <!-- /.widget -->
+        <div class="widget">
+          <h3>分享</h3>
+          <ul class="list-unstyled social">
+            <li><a href="#"><span class="icon-instagram"></span></a></li>
+            <li><a href="#"><span class="icon-twitter"></span></a></li>
+            <li><a href="#"><span class="icon-facebook"></span></a></li>
+            <li><a href="#"><span class="icon-linkedin"></span></a></li>
+            <li><a href="#"><span class="icon-pinterest"></span></a></li>
+            <li><a href="#"><span class="icon-dribbble"></span></a></li>
+          </ul>
+        </div> <!-- /.widget -->
+      </div> <!-- /.col-lg-3 -->
+
+      <div class="col-lg-2 ml-auto">
+        <div class="widget">
+          <h3>前端技术</h3>
+          <ul class="list-unstyled float-left links">
+            <li>Vue3</li>
+            <li>element-plus</li>
+            <li>bootstrap</li>
+            <li>Untree.co库</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>javascript</li>
+          </ul>
+        </div> <!-- /.widget -->
+      </div> <!-- /.col-lg-3 -->
+
+      <div class="col-lg-3">
+        <div class="widget">
+          <h3>厦门大学信息学院</h3>
+          <ul class="instafeed instagram-gallery list-unstyled">
+            <li><a class="instagram-item" href="index.html" data-fancybox="gal"><img src="images/gal_1.png"
+                                                                                     alt="" width="72" height="72"></a>
+            </li>
+            <li><a class="instagram-item" href="index.html" data-fancybox="gal"><img src="images/gal_2.jpg"
+                                                                                     alt="" width="72" height="72"></a>
+            </li>
+            <li><a class="instagram-item" href="index.html" data-fancybox="gal"><img src="images/gal_3.jpg"
+                                                                                     alt="" width="72" height="72"></a>
+            </li>
+            <li><a class="instagram-item" href="index.html" data-fancybox="gal"><img src="images/gal_4.jpg"
+                                                                                     alt="" width="72" height="72"></a>
+            </li>
+            <li><a class="instagram-item" href="index.html" data-fancybox="gal"><img src="images/gal_5.jpg"
+                                                                                     alt="" width="72" height="72"></a>
+            </li>
+            <li><a class="instagram-item" href="index.html" data-fancybox="gal"><img src="images/gal_6.jpg"
+                                                                                     alt="" width="72" height="72"></a>
+            </li>
+          </ul>
+        </div> <!-- /.widget -->
+      </div> <!-- /.col-lg-3 -->
+
+
+      <div class="col-lg-3">
+        <div class="widget">
+          <h3>联系</h3>
+          <address>地址：厦门大学</address>
+          <ul class="list-unstyled links mb-4">
+            <li><a href="tel://11234567890">111111111111</a></li>
+            <li><a href="mailto:info@mydomain.com">abc@qq.com</a></li>
+          </ul>
+        </div> <!-- /.widget -->
+      </div> <!-- /.col-lg-3 -->
+
+    </div> <!-- /.row -->
+  </div> <!-- /.container -->
+</div> <!-- /.site-footer -->
+
+
+<div id="overlayer"></div>
+<div class="loader">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.fancybox.min.js"></script>
+<script src="js/jquery.sticky.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/custom.js"></script>
+<script>
+  let vmForAll= new Vue({
+    el:"#all",
+    methods: {
+      messageBox(icon,msg){
+        this.$message({
+          type: icon,
+          message: msg
+        });
+      },
+      message2(){
+        this.messageBox('success','成功')
+      },
+    }
+  })
+
+  let majorList;
+  let major=" ";
+  let typeIndex=0;
+  let result;
+  let uid;
+  let username;
+  $(function () {
+    $.ajaxSetup({
+      //设置ajax请求结束后的执行动作
+      complete: function (xhr) {
+        console.log('')
+        // 通过XMLHttpRequest取得响应头，sessionstatus
+        if ("REDIRECT" == xhr.getResponseHeader("REDIRECT")) { //若HEADER中含有REDIRECT说明后端想重定向，
+          var win = window;
+          while (win != win.top) {
+            win = win.top;
+          }
+          console.log(xhr.getResponseHeader("CONTENTPATH"));
+          win.location.href = xhr.getResponseHeader("CONTENTPATH");//将后端重定向的地址取出来,使用win.location.href去实现重定向的要求
+        }
+      },
+      error: function (e) {
+        alert('出错了')
+      }
+    });
+    $.ajax({
+      url:"http://47.99.71.92:8080/onlinetest/major/disp",
+      // data:{},
+      type:'POST',
+      // dataType:'json',
+      success:function (data) {
+        if(data.code===0){
+          console.log(data)
+        }else if(data.code===1){
+          majorList=data.data;
+          for(let i=1;i<data.data.length;i++){
+            //bootstrap和style先，jq后，问题很大
+            // addRadioButton +=
+            //         '<input type="radio" className="btn-check" name="btnradio" style="display: none" id="btnradio'+(i+4)+'" autoComplete="off" checked>' +
+            //         '<label class="btn btn-outline-primary fs-6" for="btnradio'+(i+4)+'" style="padding:7px 20px 0px 20px;">'+data.data[i]+'</label>';
+            $("#btnradio"+(i+3)).next().text(data.data[i]);
+          }
+          major=data.data[1];
+          //$('#majorRadioButtonGroup').append(addRadioButton);
+          getData("http://47.99.71.92:8080/onlinetest/admin/searchuserbymajor")
+        }
+        // console.log(data);
+      },
+      error:function (e) {
+        vmForAll.messageBox('error','error')
+
+      }
+    })
+
+    //设置全局ajax处理逻辑
+
+  })
+
+
+  // for(let i=0;i<majorList.length;i++){
+  //   console.log(majorList.length);
+  //   $("#btnradio"+(i+3)).click(function(){
+  //     major=$(this).next().text();
+  //     console.log(major);
+  //   });
+  // }
+  //按钮点击函数
+
+  // function click0(){
+  //   typeIndex=0;
+  //   getData("http://47.99.71.92:8080/onlinetest/admin/show/single")
+  //   addListItem();
+  // };
+  // $("#btnradio0").click(click0);
+  // function click1(){
+  //   typeIndex=1;
+  //   getData("http://47.99.71.92:8080/onlinetest/admin/show/multi")
+  //   addListItem();
+  // };
+  // $("#btnradio1").click(click1);
+  // function click2(){
+  //   typeIndex=2;
+  //   getData("http://47.99.71.92:8080/onlinetest/admin/show/judge")
+  //   addListItem();
+  // };
+  // $("#btnradio2").click(click2);
+  // function click3(){
+  //   typeIndex=3;
+  //   getData("http://47.99.71.92:8080/onlinetest/admin/show/saq")
+  //   addListItem();
+  // };
+  // $("#btnradio3").click(click3);
+
+  $("#btnradio4").click(function(){
+    major=$(this).next().text();
+    getData("http://47.99.71.92:8080/onlinetest/admin/searchuserbymajor")
+  });
+  $("#btnradio5").click(function(){
+    major=$(this).next().text();
+    getData("http://47.99.71.92:8080/onlinetest/admin/searchuserbymajor")
+
+  });
+  $("#btnradio6").click(function(){
+    major=$(this).next().text();
+    getData("http://47.99.71.92:8080/onlinetest/admin/searchuserbymajor")
+
+  });
+  $("#btnradio7").click(function(){
+    major=$(this).next().text();
+    getData("http://47.99.71.92:8080/onlinetest/admin/searchuserbymajor")
+
+  });
+
+
+  function getData(urlString) {
+    $.ajax({
+      url: urlString,
+      data: {major: major},
+      type: 'POST',
+      dataType: 'json',
+      async:false,
+      success: function (data) {
+        if (data.code === 0) {
+        } else if (data.code === 1) {
+          // alert('成功')
+          result=data;
+          return data;
+        }
+      },
+      error: function (e) {
+        // vmForAll.messageBox('error','error')
+
+      }
+    })
+    if(result.data.length===0){
+      $("#searchListTableBody").empty();
+      $("#searchListTableBody").append("<span>暂无数据</span>")
+    }
+    else
+    addListItem();
+  }
+
+  function addListItem(){
+    $("#searchListTableBody").empty();
+
+    for(let i=0;i<result.data.length;i++){
+      let listItem='<tr><th scope="row">'+result.data[i].uid+'<td>'+result.data[i].userName+'</td>'
+              +'<td><a href=\'javascript:;\'>修改</a></td><td><a href=\'javascript:;\'>删除</a></td></tr>';
+
+      $("#searchListTableBody").append(listItem)
+    }
+  };
+
+  let vm= new Vue({
+    el:"#searchListTableBody",
+    // data:{
+    //   qid:qid,
+    //   major:major,
+    //   typeIndex:typeIndex,
+    //   result:result,
+    // },
+    methods: {
+      delete(name){
+        //username= target.parentNode.parentNode.firstChild.nextSibling.textContent;
+        //alert(username)
+        // alert(qid);
+        axios({
+          url: "http://47.99.71.92:8080/onlinetest/admin/deleteuser",
+          params: {
+            "username": name
+          },
+          method: 'POST',
+          async: false,
+          responseType: 'params',
+        }).then(function (response) {
+          console.log(response);
+          console.log(response.data);
+        }).catch(function (error) {
+          console.log(error);
+        })
+         window.location.href="userManage.html";
+      },
+      confirmDelete(name) {
+        this.$confirm('此操作将永久删除该用户, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.delete(name);
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });
+        });
+      },
+      click(text){
+        this.major=window.major;
+        this.result=window.result;
+        let target=window.event.target;
+        // alert(window.event.target.text);
+        if(target.text==="修改"){
+          uid= target.parentNode.parentNode.firstChild.textContent;
+          let objUser;
+          for(let j=0;j<result.data.length;j++){
+            if(uid===result.data[j].uid || uid===result.data[j].uid.toString()) {
+              objUser = result.data[j];
+            }
+          }
+          let date=new Date();
+          date.setTime(date.getTime()+3*1000);
+          document.cookie="uid="+uid+"&&&major="+objUser.major+ "&&&username="+objUser.userName;
+
+          document.cookie+=(";expires="+date.toGMTString());
+          window.location.href = "editUserInfo.html";
+        }
+        else if(target.text==="删除"){
+          username= target.parentNode.parentNode.firstChild.nextSibling.textContent;
+          this.confirmDelete(username);
+        }
+      },
+
+    }
+  })
+
+  $("#searchListTableBody").click(function(){
+    event.preventDefault();
+    let target=event.target;
+    if(target.text==="修改"){
+      // var uid= target.parentNode.parentNode.firstChild.textContent;
+      // let objUser;
+      // for(let j=0;j<result.data.length;j++){
+      //   if(uid===result.data[j].uid || uid===result.data[j].uid.toString()) {
+      //     objUser = result.data[j];
+      //   }
+      // }
+      // let date=new Date();
+      // date.setTime(date.getTime()+3*1000);
+      // document.cookie="uid="+uid+"&&&major="+objUser.major+ "&&&username="+objUser.userName;
+      //
+      // document.cookie+=(";expires="+date.toGMTString());
+      // window.location.href = "editUserInfo.html";
+      vm.click(target.text);
+    }
+    else if(target.text==="删除"){
+      // username= target.parentNode.parentNode.firstChild.nextSibling.textContent;
+      // // alert(qid);
+      // $.ajax({
+      //   url: "http://47.99.71.92:8080/onlinetest/admin/deleteuser",
+      //   data: {
+      //     username: username
+      //   },
+      //   type: 'POST',
+      //   async: false,
+      //   dataType: 'json',
+      //   success: function (data) {
+      //     if (data.code === 0) {
+      //       alert(data.msg);
+      //     } else if (data.code === 1) {
+      //     }
+      //   },
+      //   error: function (e) {
+      //     vmForAll.messageBox('error','失败')
+      //   },
+      // })
+      vm.click(target.text);
+    }
+  })
+
+
+  var keyword;
+  $("#SearchBtn").click(function(){
+    keyword=$("#searchText").val();
+    $.ajax({
+      url: "http://47.99.71.92:8080/onlinetest/admin/searchuserum",
+      data: {
+        username: keyword,
+        major:major,
+      },
+      type: 'POST',
+      async: false,
+      dataType: 'json',
+      success: function (data) {
+        if (data.code === 0) {
+          vmForAll.messageBox('warning',data.msg);
+          $("#searchListTableBody").empty();
+          $("#searchListTableBody").append("<span>暂无数据</span>")
+          // alert(data.msg);
+        } else if (data.code === 1) {
+          result=data;
+          addListItem();
+        }
+      },
+      error: function (e) {
+        vmForAll.messageBox('error','失败');
+      },
+    })
+    // if(result.data.length===0){
+    //   $("#searchListTableBody").empty();
+    //   $("#searchListTableBody").append("<span>暂无数据</span>")
+    // }
+    // else
+    //   addListItem();
+  })
+  //
+  // function getData2(urlString) {
+  //   $.ajax({
+  //     url: urlString,
+  //     data: {
+  //       info:keyword,
+  //       major: major
+  //     },
+  //     type: 'POST',
+  //     dataType: 'json',
+  //     async:false,
+  //     success: function (data) {
+  //       if (data.code === 0) {
+  //       } else if (data.code === 1) {
+  //         // alert('成功')
+  //         result=data;
+  //       }
+  //     },
+  //     error: function (e) {
+  //       // vmForAll.messageBox('error','error')
+
+  //     }
+  //   })
+
+
+
+</script>
+
+</body>
+
+</html>

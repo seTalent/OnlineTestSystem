@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovejava.mapper.SaqQuestionMapper">
+  <resultMap id="BaseResultMap" type="com.lovejava.pojo.SaqQuestion">
+    <id column="qid" jdbcType="INTEGER" property="qid" />
+    <result column="major" jdbcType="VARCHAR" property="major" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.lovejava.pojo.SaqQuestion">
+    <result column="question" jdbcType="LONGVARCHAR" property="question" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    qid, major
+  </sql>
+  <sql id="Blob_Column_List">
+    question
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_saq
+    where qid = #{qid,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMajor" resultType="com.lovejava.pojo.SaqQuestion" resultMap="BaseResultMap">
+    select * from tb_saq
+    where major=#{major}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_saq
+    where qid = #{qid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lovejava.pojo.SaqQuestion">
+    insert into tb_saq (qid, major, question
+      )
+    values (#{qid,jdbcType=INTEGER}, #{major,jdbcType=VARCHAR}, #{question,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lovejava.pojo.SaqQuestion">
+    insert into tb_saq
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="qid != null">
+        qid,
+      </if>
+      <if test="major != null">
+        major,
+      </if>
+      <if test="question != null">
+        question,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="qid != null">
+        #{qid,jdbcType=INTEGER},
+      </if>
+      <if test="major != null">
+        #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="question != null">
+        #{question,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lovejava.pojo.SaqQuestion">
+    update tb_saq
+    <set>
+      <if test="major != null">
+        major = #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="question != null">
+        question = #{question,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where qid = #{qid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.lovejava.pojo.SaqQuestion">
+    update tb_saq
+    set major = #{major,jdbcType=VARCHAR},
+      question = #{question,jdbcType=LONGVARCHAR}
+    where qid = #{qid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lovejava.pojo.SaqQuestion">
+    update tb_saq
+    set major = #{major,jdbcType=VARCHAR}
+    where qid = #{qid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/vue.js"></script>
+
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Display+Playfair:wght@400;700&family=Inter:wght@400;700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="css/index_latest.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="fonts/index.css">
+<!--    &lt;!&ndash; 导入 Vue 3 &ndash;&gt;-->
+<!--    <script src="https://unpkg.com/vue@3.2.36/dist/vue.global.js"></script>-->
+<!--    &lt;!&ndash; 导入组件库 &ndash;&gt;-->
+<!--    <script src="https://unpkg.com/element-plus@2.2.9/dist/index.full.js"></script>-->
+<!--    &lt;!&ndash; 导入样式 &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://unpkg.com/element-plus@2.2.9/dist/index.css" />-->
+    <title>Title</title>
+</head>
+<body id="all">
+<div>
+    <el-button type="text" id="btn" @click="vmForAll.messageBox('success','成功')">点击打开 Message Box</el-button>
+    <input type="button" value="按钮" id="btn2" onclick="vmForAll.messageBox('info','成功')">
+    <input type="button" value="按钮" id="btn3" onclick="vmForAll.messageBox('success','成功')">
+    <i class="el-icon-edit"></i>
+    <el-button icon="el-icon-upload" type="primary" size="mini">登录</el-button>
+</div>
+
+</body>
+<script>
+    let vmForAll= new Vue({
+        el:"#all",
+        methods: {
+            messageBox(icon,msg){
+                this.$message({
+                    type: icon,
+                    message: msg
+                });
+            },
+            message2(){
+                this.messageBox('info','成功')
+            },
+        }
+    })
+
+    $("#btn2").click(function(){
+        vmForAll.messageBox('warning','成功');
+    })
+
+</script>
+</html>

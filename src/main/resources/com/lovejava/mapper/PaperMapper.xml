@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovejava.mapper.PaperMapper">
+  <resultMap id="BaseResultMap" type="com.lovejava.pojo.Paper">
+    <id column="major" jdbcType="VARCHAR" property="major" />
+    <result column="single_number" jdbcType="INTEGER" property="singleNumber" />
+    <result column="multi_number" jdbcType="INTEGER" property="multiNumber" />
+    <result column="judge_number" jdbcType="INTEGER" property="judgeNumber" />
+    <result column="saq_number" jdbcType="INTEGER" property="saqNumber" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    major, single_number, multi_number, judge_number, saq_number
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_paper
+    where major = #{major,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from tb_paper
+    where major = #{major,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.lovejava.pojo.Paper">
+    insert into tb_paper (major, single_number, multi_number, 
+      judge_number, saq_number)
+    values (#{major,jdbcType=VARCHAR}, #{singleNumber,jdbcType=INTEGER}, #{multiNumber,jdbcType=INTEGER}, 
+      #{judgeNumber,jdbcType=INTEGER}, #{saqNumber,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lovejava.pojo.Paper">
+    insert into tb_paper
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="major != null">
+        major,
+      </if>
+      <if test="singleNumber != null">
+        single_number,
+      </if>
+      <if test="multiNumber != null">
+        multi_number,
+      </if>
+      <if test="judgeNumber != null">
+        judge_number,
+      </if>
+      <if test="saqNumber != null">
+        saq_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="major != null">
+        #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="singleNumber != null">
+        #{singleNumber,jdbcType=INTEGER},
+      </if>
+      <if test="multiNumber != null">
+        #{multiNumber,jdbcType=INTEGER},
+      </if>
+      <if test="judgeNumber != null">
+        #{judgeNumber,jdbcType=INTEGER},
+      </if>
+      <if test="saqNumber != null">
+        #{saqNumber,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lovejava.pojo.Paper">
+    update tb_paper
+    <set>
+      <if test="singleNumber != null">
+        single_number = #{singleNumber,jdbcType=INTEGER},
+      </if>
+      <if test="multiNumber != null">
+        multi_number = #{multiNumber,jdbcType=INTEGER},
+      </if>
+      <if test="judgeNumber != null">
+        judge_number = #{judgeNumber,jdbcType=INTEGER},
+      </if>
+      <if test="saqNumber != null">
+        saq_number = #{saqNumber,jdbcType=INTEGER},
+      </if>
+    </set>
+    where major = #{major,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lovejava.pojo.Paper">
+    update tb_paper
+    set single_number = #{singleNumber,jdbcType=INTEGER},
+      multi_number = #{multiNumber,jdbcType=INTEGER},
+      judge_number = #{judgeNumber,jdbcType=INTEGER},
+      saq_number = #{saqNumber,jdbcType=INTEGER}
+    where major = #{major,jdbcType=VARCHAR}
+  </update>
+</mapper>

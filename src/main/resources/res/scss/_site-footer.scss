@@ -1,0 +1,71 @@
+.site-footer {
+	background: $primary;
+	font-size: 14px;	
+	color: $white;
+	padding: 70px 0;
+	a {
+		color: $white;
+		position: relative;
+		display: inline-block;
+	}
+	.btn {
+		&:before {
+			display: none;
+		}
+	}
+	.widget {
+		margin-bottom: 40px;
+		display: block;
+		position: relative;
+		z-index: 1;
+		h3 {
+			font-size: 16px;
+			color: $white;
+			margin-bottom: 30px;
+		}
+
+		.links {
+			width: 150px;
+			li {
+				margin-bottom: 10px;
+				a {
+					color: rgba($white, .5);
+					&:hover {
+						color :$white;
+					}
+				}
+			}
+		}
+	}
+
+	.social {
+		li {
+			display: inline-block;
+			a {
+				display: inline-block;
+				width: 30px;
+				height: 30px;
+				position: relative;
+				background-color: $white;
+				border-radius: 50%;
+				color: $black;
+				&:before {
+					display: none;
+				}
+				> span {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+				}
+				&:hover {
+					background: lighten($primary, 10%);
+					color: $white;
+				}
+			}
+		}
+	}
+	.copyright {
+		color: rgba($white, .5);
+	}
+}

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovejava.mapper.RecordMapper">
+  <resultMap id="BaseResultMap" type="com.lovejava.pojo.Record">
+    <id column="rid" jdbcType="INTEGER" property="rid" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="single_list" jdbcType="VARCHAR" property="singleList" />
+    <result column="multi_list" jdbcType="VARCHAR" property="multiList" />
+    <result column="judge_list" jdbcType="VARCHAR" property="judgeList" />
+    <result column="saq_list" jdbcType="VARCHAR" property="saqList" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    rid, uid, single_list, multi_list, judge_list, saq_list, start_time, end_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tb_record
+    where rid = #{rid,jdbcType=INTEGER}
+  </select>
+  <select id="selectByUid" resultType="com.lovejava.pojo.Record" resultMap="BaseResultMap">
+    select * from tb_record
+    where uid=#{uid}
+  </select>
+  <select id="selectByUidAndRid" resultType="com.lovejava.pojo.Record" resultMap="BaseResultMap">
+    select * from tb_record
+    where uid=#{uid} and rid=#{rid}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_record
+    where rid = #{rid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lovejava.pojo.Record">
+    insert into tb_record (rid, uid, single_list,
+      multi_list, judge_list, saq_list,
+      start_time, end_time)
+    values (#{rid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{singleList,jdbcType=VARCHAR},
+      #{multiList,jdbcType=VARCHAR}, #{judgeList,jdbcType=VARCHAR}, #{saqList,jdbcType=VARCHAR},
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lovejava.pojo.Record">
+    insert into tb_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rid != null">
+        rid,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="singleList != null">
+        single_list,
+      </if>
+      <if test="multiList != null">
+        multi_list,
+      </if>
+      <if test="judgeList != null">
+        judge_list,
+      </if>
+      <if test="saqList != null">
+        saq_list,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rid != null">
+        #{rid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="singleList != null">
+        #{singleList,jdbcType=VARCHAR},
+      </if>
+      <if test="multiList != null">
+        #{multiList,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeList != null">
+        #{judgeList,jdbcType=VARCHAR},
+      </if>
+      <if test="saqList != null">
+        #{saqList,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lovejava.pojo.Record">
+    update tb_record
+    <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="singleList != null">
+        single_list = #{singleList,jdbcType=VARCHAR},
+      </if>
+      <if test="multiList != null">
+        multi_list = #{multiList,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeList != null">
+        judge_list = #{judgeList,jdbcType=VARCHAR},
+      </if>
+      <if test="saqList != null">
+        saq_list = #{saqList,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where rid = #{rid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lovejava.pojo.Record">
+    update tb_record
+    set uid = #{uid,jdbcType=INTEGER},
+      single_list = #{singleList,jdbcType=VARCHAR},
+      multi_list = #{multiList,jdbcType=VARCHAR},
+      judge_list = #{judgeList,jdbcType=VARCHAR},
+      saq_list = #{saqList,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP}
+    where rid = #{rid,jdbcType=INTEGER}
+  </update>
+</mapper>

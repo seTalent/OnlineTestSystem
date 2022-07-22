@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovejava.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.lovejava.pojo.User">
+    <id column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="major" jdbcType="VARCHAR" property="major" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    uid, user_name, password, major
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tb_user
+    where uid = #{uid,jdbcType=INTEGER}
+  </select>
+  <select id="getPhone" parameterType="Integer" resultType="String">
+    select phone from tb_user
+    where uid=#{uid}
+  </select>
+    <select id="selectByUserName" parameterType="java.lang.String" resultType="com.lovejava.pojo.User" resultMap="BaseResultMap">
+        select * from tb_user
+        where user_name=#{userName};
+    </select>
+
+  <select id="selectByUserNameFuzzy" resultType="com.lovejava.pojo.User" resultMap="BaseResultMap">
+    select * from tb_user where user_name like #{username};
+  </select>
+  <select id="selectByMajor" resultType="com.lovejava.pojo.User" resultMap="BaseResultMap">
+    select * from tb_user where major=#{major}
+  </select>
+    <select id="selectByPhone" resultType="com.lovejava.pojo.User" resultMap="BaseResultMap">
+      select * from tb_user where phone like #{phone};
+    </select>
+  <select id="selectByNameAndMajor" resultType="com.lovejava.pojo.User" resultMap="BaseResultMap">
+    select * from tb_user
+    where major=#{major} and user_name like #{name};
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_user
+    where uid = #{uid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByUserName">
+    delete from tb_user
+    where user_name=#{username};
+  </delete>
+  <insert id="insert" parameterType="com.lovejava.pojo.User">
+    insert into tb_user (uid, user_name, password,
+      major, phone)
+    values (#{uid,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+      #{major,jdbcType=VARCHAR}, '12345678910')
+  </insert>
+  <insert id="insertSelective" parameterType="com.lovejava.pojo.User">
+    insert into tb_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="major != null">
+        major,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null">
+        #{major,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lovejava.pojo.User">
+    update tb_user
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null">
+        major = #{major,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lovejava.pojo.User">
+    update tb_user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      major = #{major,jdbcType=VARCHAR}
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+</mapper>

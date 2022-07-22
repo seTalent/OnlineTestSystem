@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovejava.mapper.AdminMapper">
+  <resultMap id="BaseResultMap" type="com.lovejava.pojo.Admin">
+    <id column="aid" jdbcType="INTEGER" property="aid" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    aid, user_name, password
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_admin
+    where aid = #{aid,jdbcType=INTEGER}
+  </select>
+  <select id="selectByUserName" resultType="com.lovejava.pojo.Admin" resultMap="BaseResultMap">
+    select * from tb_admin where user_name=#{username};
+  </select>
+  <select id="selectByUserNameFuzzy" resultType="com.lovejava.pojo.Admin" resultMap="BaseResultMap">
+    select * from tb_admin where user_name like #{username};
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_admin
+    where aid = #{aid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByUserName">
+    delete from tb_admin
+    where user_name=#{username};
+  </delete>
+  <insert id="insert" parameterType="com.lovejava.pojo.Admin">
+    insert into tb_admin (aid, user_name, password
+      )
+    values (#{aid,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lovejava.pojo.Admin">
+    insert into tb_admin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="aid != null">
+        aid,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="aid != null">
+        #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lovejava.pojo.Admin">
+    update tb_admin
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lovejava.pojo.Admin">
+    update tb_admin
+    set user_name = #{userName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR}
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+
+
+</mapper>
